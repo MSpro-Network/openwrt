@@ -34,6 +34,7 @@ get_status_led() {
 	a5-v11|\
 	d105|\
 	dcs-930l-b1|\
+	dcs-5020l-a1|\
 	ex2700|\
 	hlk-rm04|\
 	mpr-a1|\

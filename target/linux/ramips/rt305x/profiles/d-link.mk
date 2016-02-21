@@ -31,6 +31,19 @@ endef
 $(eval $(call Profile,DCS930LB1))
 
 
+define Profile/DCS5020LA1
+	NAME:=D-Link DCS-5020L A1
+	PACKAGES:=kmod-video-core kmod-video-uvc \
+		kmod-sound-core kmod-usb-audio \
+		kmod-usb-core kmod-usb-ohci kmod-usb2
+endef
+
+define Profile/DCS5020LA1/Description
+	Package set for D-Link DCS-5020L A1 board
+endef
+$(eval $(call Profile,DCS5020LA1))
+
+
 define Profile/DIR610A1
 	NAME:=D-Link DIR-610 A1
 	PACKAGES:=kmod-ledtrig-netdev kmod-ledtrig-timer

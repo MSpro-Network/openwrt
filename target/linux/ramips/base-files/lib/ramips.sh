@@ -106,6 +106,9 @@ ramips_board_detect() {
 	*"DCS-930L B1")
 		name="dcs-930l-b1"
 		;;
+	*"DCS-5020L A1")
+		name="dcs-5020l-a1"
+		;;
 	*"DIR-300 B1")
 		name="dir-300-b1"
 		;;

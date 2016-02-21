@@ -39,6 +39,7 @@ platform_check_image() {
 	db-wrt01|\
 	dcs-930|\
 	dcs-930l-b1|\
+	dcs-5020l-a1|\
 	dir-300-b1|\
 	dir-300-b7|\
 	dir-320-b1|\
