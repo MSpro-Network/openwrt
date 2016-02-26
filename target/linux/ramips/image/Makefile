@@ -566,23 +566,24 @@ BuildFirmware/DCS930/initramfs=$(call BuildFirmware/OF/initramfs,$(1),$(2),$(3))
 Image/Build/Profile/DCS930=$(call BuildFirmware/DCS930/$(1),$(1),dcs-930,DCS-930)
 Image/Build/Profile/DCS930LB1=$(call BuildFirmware/DCS930/$(1),$(1),dcs-930l-b1,DCS-930L-B1)
 
-define BuildFirmware/DCS5020L/squashfs
-	$(call BuildFirmware/Default4M/squashfs,squashfs,$(2),$(3))
+define BuildFirmware/DCS5020LA1/squashfs
+	$(call BuildFirmware/Default8M/squashfs,squashfs,$(2),$(3))
 	dd if=$(KDIR)/vmlinux-$(2).bin.lzma of=$(KDIR)/image.$(2).combined bs=1048512 count=1 conv=sync
 	cat $(KDIR)/root.squashfs >> $(KDIR)/image.$(2).combined
         $(call MkImage,lzma,$(KDIR)/image.$(2).combined,$(KDIR)/image.$(2))
 	$(call prepare_generic_squashfs,$(KDIR)/image.$(2))
-	if [ `stat -c%s "$(KDIR)/image.$(2)"` -gt $(ralink_default_fw_size_4M) ]; then \
+	if [ `stat -c%s "$(KDIR)/image.$(2)"` -gt $(ralink_default_fw_size_8M) ]; then \
 		echo "Warning: $(KDIR)/image.$(2)  is too big" >&2; \
 	else \
 		dd if=$(KDIR)/image.$(2) of=$(KDIR)/dcs.tmp bs=64K count=5 conv=sync ;\
 		cat $(KDIR)/image.$(2) >> $(KDIR)/dcs.tmp ; \
-		dd if=$(KDIR)/dcs.tmp of=$(call imgname,$(1),$(2))-factory.bin bs=4096k count=1 conv=sync ;\
+		dd if=$(KDIR)/dcs.tmp of=$(call imgname,$(1),$(2))-factory.bin bs=8192k count=1 conv=sync ;\
 		$(STAGING_DIR_HOST)/bin/mkdcs932 $(call imgname,$(1),$(2))-factory.bin ; \
 	fi
 endef
-BuildFirmware/DCS5020L/initramfs=$(call BuildFirmware/OF/initramfs,$(1),$(2),$(3))
-Image/Build/Profile/DCS5020LA1=$(call BuildFirmware/DCS5020L/$(1),$(1),dcs-5020l-a1,DCS-5020L-A1)
+BuildFirmware/DCS5020LA1/initramfs=$(call BuildFirmware/OF/initramfs,$(1),$(2),$(3))
+#Image/Build/Profile/DCS5020LA1=$(call BuildFirmware/DCS5020LA1/$(1),$(1),dcs-5020l-a1,DCS-5020L-A1)
+Image/Build/Profile/DCS5020LA1=$(call BuildFirmware/Default8M/$(1),$(1),dcs-5020l-a1,DCS-5020L-A1)
 
 Image/Build/Profile/ESR-9753=$(call BuildFirmware/Default4M/$(1),$(1),esr-9753,ESR-9753)
 
