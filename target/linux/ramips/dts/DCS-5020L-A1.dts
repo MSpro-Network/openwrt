@@ -67,6 +67,21 @@
 
 	gpio-leds {
 		compatible = "gpio-leds";
+
+		status {
+			label = "dcs-5020l-a1:green:power";
+			gpios = <&gpio0 9 1>;
+		};
+
+		power {
+			label = "dcs-5020l-a1:red:power";
+			gpios = <&gpio0 19 1>;
+		};
+
+		wps {
+			label = "dcs-5020l-a1:blue:wps";
+			gpios = <&gpio0 13 1>;
+		};
 	};
 
 	gpio-keys-polled {
@@ -74,6 +89,18 @@
 		#address-cells = <1>;
 		#size-cells = <0>;
 		poll-interval = <20>;
+
+		reset {
+			label = "reset";
+			gpios = <&gpio0 10 1>;
+			linux,code = <0x198>;
+		};
+
+		wps {
+			label = "wps";
+			gpios = <&gpio0 0 1>;
+			linux,code = <0x211>;
+		};
 	};
 
 	ehci@101c0000 {

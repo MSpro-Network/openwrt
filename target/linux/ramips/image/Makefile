@@ -582,8 +582,7 @@ define BuildFirmware/DCS5020LA1/squashfs
 	fi
 endef
 BuildFirmware/DCS5020LA1/initramfs=$(call BuildFirmware/OF/initramfs,$(1),$(2),$(3))
-#Image/Build/Profile/DCS5020LA1=$(call BuildFirmware/DCS5020LA1/$(1),$(1),dcs-5020l-a1,DCS-5020L-A1)
-Image/Build/Profile/DCS5020LA1=$(call BuildFirmware/Default8M/$(1),$(1),dcs-5020l-a1,DCS-5020L-A1)
+Image/Build/Profile/DCS5020LA1=$(call BuildFirmware/DCS5020LA1/$(1),$(1),dcs-5020l-a1,DCS-5020L-A1)
 
 Image/Build/Profile/ESR-9753=$(call BuildFirmware/Default4M/$(1),$(1),esr-9753,ESR-9753)
 

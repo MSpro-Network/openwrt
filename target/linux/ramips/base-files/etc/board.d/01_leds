@@ -95,7 +95,10 @@ dcs-930l-b1)
 	ucidef_set_led_default "power" "POWER" "$board:red:power" "1"
 	ucidef_set_led_netdev "wifi" "WiFi" "$board:blue:wps"
 	;;
-dcs-5020l-a1|\
+dcs-5020l-a1)
+	ucidef_set_led_default "power" "POWER" "$board:red:power" "1"
+	ucidef_set_led_netdev "wifi" "WiFi" "$board:blue:wps"
+	;;
 dir-300-b1|\
 dir-600-b1|\
 dir-600-b2|\
